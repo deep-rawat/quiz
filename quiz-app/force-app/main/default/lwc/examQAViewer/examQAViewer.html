@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-box main">
+        <p class="exam-title">AI Specialist</p>
+        <div class="slds-form-element">
+            <label class="slds-checkbox_toggle slds-grid" style="justify-content:end">
+    <span class="slds-form-element__label slds-m-bottom_none">Show Answers</span>
+    <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" onchange={handleToggleChange}/>
+    <span id="checkbox-toggle-16" class="slds-checkbox_faux_container">
+      <span class="slds-checkbox_faux"></span>
+      <span class="slds-checkbox_on">Show</span>
+      <span class="slds-checkbox_off">Hide</span>
+    </span>
+  </label>
+        </div>
+        <template if:true={questions}>
+            <ol style="list-style:number;font-size:18px;margin-left:20px;">
+                <template for:each={questions} for:item="question">
+                    <li key={question.Id} style="margin-top: 10px">
+                        <p class="question">{question.QSV_Question_Text__c}</p>
+                        <ol style="list-style:upper-alpha inside; margin-top: 15px">
+                            <template for:each={question.Question_Choices__r} for:item="choice">
+                                <template if:true={isShowAnswers}>
+                                    <li if:true={choice.QSV_Is_Correct__c} key={choice.Id} class="option-correct">
+                                        {choice.QSV_Choice_Text__c}
+                                    </li>
+                                    <li if:false={choice.QSV_Is_Correct__c} key={choice.Id}>
+                                        {choice.QSV_Choice_Text__c}
+                                    </li>
+                                </template>
+                                <template if:false={isShowAnswers}>
+                                    <li key={choice.Id}>
+                                        {choice.QSV_Choice_Text__c}
+                                    </li>
+                                </template>
+
+                            </template>
+                        </ol>
+                        <hr />
+                    </li>
+                </template>
+            </ol>
+        </template>
+    </div>
+</template>
