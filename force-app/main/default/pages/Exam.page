@@ -1,0 +1,17 @@
+<apex:page standardStylesheets="true" sidebar="false" applyBodyTag="false"
+           showHeader="false">
+    <apex:includeLightning />
+	<div id="cmpo">
+        
+    </div>    
+    <script>
+    	$Lightning.use("c:ExamApp", function(){
+                       $Lightning.createComponent("c:examQAViewer", {
+                       message   : 'Simple Message From VF Page' // You can pass the value to @api attributes if you have inside JavaScript Class.
+         
+                       }, "cmpo", function(cmp){
+        						console.log("component created");
+        				});
+        });
+    </script>
+</apex:page>

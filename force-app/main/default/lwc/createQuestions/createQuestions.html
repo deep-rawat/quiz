@@ -1,0 +1,45 @@
+<template>
+    <div class="slds-box container">
+        <c-custom-lookup-lwc icon-name="custom:custom55" s-object-api-name="QSV_Exam__c" label="Select Exam"
+        onlookupupdate={handleRecordPickerChange} placeholder="Search Exam here..."></c-custom-lookup-lwc>
+
+        <div class="slds-box">
+            <div style="display: flex;justify-content: end;">
+                <lightning-button label="Add Question" onclick={handleAddQuestionClick} class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+
+            <ol style="list-style:number;margin-left:10px;">
+                <template for:each={questionList} for:item="question" for:index="index">
+                    <li key={question.id} style="margin-top: 10px">
+                        <lightning-textarea name="input1" label="Enter your question..." data-question-idx={index}
+                            value={question.questionText} onchange={handleQuestionChange}></lightning-textarea>
+                        <div style="display: flex;justify-content: end;margin-block: 1rem;">
+                            <lightning-button variant="brand" label="Add Choice" onclick={handleAddChoice}
+                                data-question-idx={index} class="slds-m-left_x-small"></lightning-button>
+                        </div>
+
+                        <template for:each={question.choices} for:item="choiceObj" for:index="choiceIndex">
+                            <div key={choiceObj.choiceId} style="display:flex;">
+                                <lightning-input type="checkbox" value={choiceObj.isCorrect}
+                                    disabled={choiceObj.isCorrect} checked={choiceObj.isCorrect}
+                                    onchange={handleCheckBoxChange} data-choice-idx={choiceIndex}
+                                    data-question-idx={index}></lightning-input>
+                                <lightning-textarea name="input2" label="Enter your choice..." data-question-idx={index}
+                                    data-choice-idx={choiceIndex} value={choiceObj.choice} onchange={handleChoiceChange}
+                                    style="width:100%"></lightning-textarea>
+                            </div>
+                        </template>
+                        <hr />
+                    </li>
+                </template>
+            </ol>
+
+            <div>
+                <lightning-button variant="brand" label="Save" onclick={handleSave} class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+
+        </div>
+    </div>
+</template>
