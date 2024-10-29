@@ -5,7 +5,23 @@
       "versionNumber": "0.1.0.NEXT",
       "path": "force-app",
       "default": true,
-      "package": "quizTestApp",
+      "package": "quizTestApp3",
+      "versionDescription": ""
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": false,
+      "package": "quizTestApp4",
+      "versionDescription": ""
+    },
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "force-app",
+      "default": false,
+      "package": "quizTestApp5",
       "versionDescription": ""
     }
   ],
@@ -14,6 +30,11 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "62.0",
   "packageAliases": {
-    "quizTestApp": "0HodM0000000VtRSAU"
+    "quizTestApp": "0HodM0000000VtRSAU",
+    "quizTestApp2": "0HodM0000000Vv3SAE",
+    "quizTestApp3": "0HodM0000000VwfSAE",
+    "quizTestApp4": "0HodM0000000VyHSAU",
+    "quizTestApp5": "0HodM0000000VztSAE",
+    "quizTestApp5@0.1.0-1": "04tdM0000005ZZpQAM"
   }
 }
